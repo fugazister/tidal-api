@@ -15,6 +15,8 @@ class Tidal {
     this.webToken = 'wdgaB1CilGA-S_s2';
     this.countryCode = options.countryCode || 'US';
     this.limit = options.limit || 1000;
+    this.userId = options.userId;
+    this.sessionId = options.sessionId;
     this.api = axios.create({
       baseURL: this.url,
       headers: {
@@ -22,7 +24,7 @@ class Tidal {
       },
     });
     // some base params for GET requests
-    this.params = `limit=${this.limit}&countryCode=${this.countryCode}`;
+    this.params = `limit=${this.limit}&countryCode=${this.countryCode}&sessionId=${this.sessionId}`;
     // params for Tidal pages that require a locale and device type
     this.localeParams = `locale=en_${this.countryCode}&deviceType=BROWSER&countryCode=${this.countryCode}`;
   }
